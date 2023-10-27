@@ -1,35 +1,32 @@
-// program3.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+#include<iostream>
 using namespace std;
-struct empl {
-    int id;
-    char name[20];
-    char desig[20];
+class MyClass1{
+    private:
+        int num1;
+    public:
+        void disp1(){
+            cout<<"Disp of class1"<<endl;
+        }    
+        
+    
 };
-int main()
-{
-    empl e1;
-    cout << "Enter the ID ";
-    cin >> e1.id;
-    //cin.ignore();
-    cout << endl<<"Enter the name ";
-    //cin.getline (e1.name,20);
-    cin >> e1.name;
-    cout <<endl<< "Enter the desig ";
-    //cin.getline(e1.desig,20);
-    cin >> e1.desig;
-    cout << endl << "Entered detail " << e1.id << e1.name << e1.desig;
-}
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+class MyClass2{
+    private:
+        int num2;
+    public:
+        void disp2(MyClass1 &ref, int num){
+            num2 = num;
+            cout<<"Num = "<<num2;
+            cout<<"Disp of class2";
+            ref.disp1();
+        }    
+        int sendVal(){
+            return num2;
+        }
+};
+ int main(){
+    MyClass1 m1;
+    MyClass2 m2;
+    m2.disp2(m1,100);
+    return 0;
+ }
